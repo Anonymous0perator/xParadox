@@ -22,6 +22,22 @@ function isCommand(command, message) {
     var content = message.content.toLowerCase();//it will get it.
     return content.startsWith(prefix + command);//Checking if the message has a prefix first.
 };
+if(isCommand('rcaf_tryout', message)){
+
+   let LowRankRoleObject= message.guild.roles.find('name', 'Low Rank');
+  if(message.member.roles.find("name", "High Command")|| message.member.roles.find("name", "Chief Command")){
+    message.delete(1000);
+    message.channel.send(`${LowRankRoleObject} Royal Canadian Air Force tryout is being hosted in air force base, please report to the air force base. Tryout will be locked within 5 mins. https://www.roblox.com/games/2653638024/s-Place-Number-0`);
+    setTimeout(function(){
+      message.channel.send("Royal Canadian Air Force tryout is locked.")
+    }, 300000)
+  } else{
+    message.reply("You do not have permission to use this command.")
+  }
+
+
+
+  }
 //isNotCommand function (needed sometimes)
 
 client.on('message', (message) => {
@@ -72,7 +88,7 @@ if(message.member.roles.find("name", "High Command")|| message.member.roles.find
       roblox.getRankNameInGroup(mp, id)
       .then(function(rank){
         if(rank === 'Guest'){
-          message.member.removeRole(myRole)
+          message.member.removeRole(myRole2)
         } else {
           message.member.addRole(myRole)
         }
@@ -89,7 +105,7 @@ if(message.member.roles.find("name", "High Command")|| message.member.roles.find
       roblox.getRankNameInGroup(srr, id)
       .then(function(rank){
         if(rank === 'Guest'){
-          message.member.removeRole(myRole2)
+          message.member.removeRole(myRole)
         } else {
           message.member.addRole(myRole2)
         }
