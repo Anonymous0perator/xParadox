@@ -93,7 +93,7 @@ if(message.member.roles.find("name", "High Command")|| message.member.roles.find
         if(rank === 'Guest'){
           message.member.removeRole(myRole2)
         } else {
-          message.member.addRole(myRole)
+          message.member.addRole(myRole2)
         }
       })
       roblox.getRankNameInGroup(ets, id)
@@ -110,7 +110,7 @@ if(message.member.roles.find("name", "High Command")|| message.member.roles.find
         if(rank === 'Guest'){
           message.member.removeRole(myRole)
         } else {
-          message.member.addRole(myRole2)
+          message.member.addRole(myRole)
         }
       })
   })
