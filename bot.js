@@ -22,6 +22,11 @@ function isCommand(command, message) {
     var content = message.content.toLowerCase();//it will get it.
     return content.startsWith(prefix + command);//Checking if the message has a prefix first.
 };
+
+//isNotCommand function (needed sometimes)
+
+client.on('message', (message) => {
+
 if(isCommand('rcaf_tryout', message)){
 
    let LowRankRoleObject= message.guild.roles.find('name', 'Low Rank');
@@ -38,9 +43,7 @@ if(isCommand('rcaf_tryout', message)){
 
 
   }
-//isNotCommand function (needed sometimes)
 
-client.on('message', (message) => {
 if(isCommand('cbt', message)){
 
  let LowRankRoleObject= message.guild.roles.find('name', 'Low Rank');
