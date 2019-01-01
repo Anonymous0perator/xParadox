@@ -211,6 +211,13 @@ if(isCommand("tagme", message)){
 }
 message.reply("Check your tags.")
 }
+    
+    if(isCommand('updatename', messsage)){
+     if(message.member.roles.find("name", "Verified")){
+    let member = message.guild.member(message.author);
+    member.setNickname(`[${member.highestRole.name}] ${member.displayName}`)
+      }
+    }
     if (isCommand('update', message)){
 
       var args = message.content.split(/[ ]+/)
@@ -314,10 +321,7 @@ message.reply("Check your tags.")
 
             })
         })
- if(message.member.roles.find("name", "Verified")){
-    let member = message.guild.member(message.author);
-    member.setNickname(`[${member.highestRole.name}] ${member.displayName}`)
-      }
+
     }
 
 });
