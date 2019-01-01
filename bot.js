@@ -30,7 +30,13 @@ function isCommand(command, message) {
 client.on('message', (message) => {
     
 
-
+if(isCommand('events', message)){
+      let member = message.guild.member(message.author);
+  var username = member.displayName
+  let myRole = message.guild.roles.find("name", "Events");
+    
+     message.member.addRole(myRole)
+}
 
   if(isCommand('basictraining', message)){
 /*
