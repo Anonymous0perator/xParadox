@@ -28,6 +28,8 @@ function isCommand(command, message) {
 //isNotCommand function (needed sometimes)
 
 client.on('message', (message) => {
+    
+
 
 
   if(isCommand('basictraining', message)){
@@ -57,7 +59,7 @@ footer: {
 
 
 */
-   let LowRankRoleObject= message.guild.roles.find('name', 'Low Rank');
+   let LowRankRoleObject= message.guild.roles.find('name', 'Events');
   if(message.member.roles.find("name", "High Rank")|| message.member.roles.find("name", "Chief Staff")){
     message.delete(1000);
     message.channel.send(`${LowRankRoleObject},`)
@@ -101,7 +103,7 @@ footer: {
 
 if(isCommand('ssu', message)){
 
- let LowRankRoleObject= message.guild.roles.find('name', 'Low Rank');
+ let LowRankRoleObject= message.guild.roles.find('name', 'Events');
 if(message.member.roles.find("name", "Chief Staff")|| message.member.roles.find("name", "High Rank")){
   message.delete(1000);
   message.channel.send(`${LowRankRoleObject},`)
