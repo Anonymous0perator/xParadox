@@ -27,8 +27,9 @@ function isCommand(command, message) {
 };
 //isNotCommand function (needed sometimes)
 
+
 client.on('message', (message) => {
-    
+  
 
 if(isCommand('events', message)){
       let member = message.guild.member(message.author);
@@ -36,6 +37,7 @@ if(isCommand('events', message)){
   let myRole = message.guild.roles.find("name", "Events");
     
      message.member.addRole(myRole)
+    message.reply("Gave you a event role");
 }
 
   if(isCommand('basictraining', message)){
@@ -225,41 +227,97 @@ message.reply("Check your tags.")
               let maj2 = message.guild.roles.find("name", "Middle Rank");
               let maj1 = message.guild.roles.find("name", "High Rank");
               let maj3 = message.guild.roles.find("name", "Chief Staff");
+              let pvt = message.guild.roles.find("name", "PVT");
+                let lcpl = message.guild.roles.find("name", "LCPL");
+                let cpl = message.guild.roles.find("name", "CPL");
+                let sgt = message.guild.roles.find("name", "SGT");
+                let sfc = message.guild.roles.find("name", "SFC");
+                let ssgt = message.guild.roles.find("name", "SSGT");
+                let lt = message.guild.roles.find("name", "LT");
+                let cpt = message.guild.roles.find("name", "CPT");
+                let major = message.guild.roles.find("name", "MAJ");
+                let ltcol = message.guild.roles.find("name", "LTCOL");
+                let col = message.guild.roles.find("name", "COL");
+                let brig = message.guild.roles.find("name", "BRIG");
+                let os = message.guild.roles.find("name", "OS");
+                let dev = message.guild.roles.find("name", "DEV");
+                let majgen = message.guild.roles.find("name", "MAJGEN");
+                let ltgen = message.guild.roles.find("name", "LTGEN");
+                let gen = message.guild.roles.find("name", "GEN");
+                
                 if (rank === 10) {
                     message.member.addRole(maj)
+                    message.member.addRole(pvt)
                 }
                 if(rank === 30) {
                       message.member.addRole(maj)
+                    message.member.addRole(lcpl)
+                    message.member.removeRole(pvt)
                 } else if(rank === 40) {
                       message.member.addRole(maj)
+                    message.member.addRole(cpl)
+                    message.member.removeRole(lcpl)
                 } else if(rank === 50) {
                       message.member.addRole(maj)
+                    message.member.addRole(sgt)
+                    message.member.removeRole(cpl)
                 } else if(rank === 60) {
                       message.member.addRole(maj)
+                    message.member.addRole(sfc)
+                    message.member.removeRole(sgt)
                 } else if(rank === 70) {
                       message.member.addRole(maj2)
+                    message.member.addRole(ssgt)
+                    message.member.removeRole(sfc)
                 } else if(rank === 75) {
                       message.member.addRole(maj2)
+                    message.member.addRole(lt)
+                    message.member.removeRole(ssgt)
                 } else if(rank === 79) {
                       message.member.addRole(maj2)
+                    message.member.addRole(cpt)
+                    message.member.removeRole(lt)
                 } else if(rank === 80) {
                       message.member.addRole(maj1)
+                    message.member.addRole(major)
+                    message.member.removeRole(cpt)
                 } else if(rank === 90) {
                       message.member.addRole(maj1)
+                    message.member.addRole(ltcol)
+                    message.member.removeRole(major)
                 } else if(rank === 210) {
                       message.member.addRole(maj1)
+                    message.member.addRole(col)
+                    message.member.removeRole(ltcol)
                 } else if(rank === 230) {
                       message.member.addRole(maj1)
+                    message.member.addRole(brig)
+                    message.member.removeRole(col)
                 } else if(rank === 245) {
                       message.member.addRole(maj1)
+                    message.member.addRole(os)
+                    message.member.removeRole(brig)
+                } else if(rank === 246) {
+                      message.member.addRole(maj3)
+                    message.member.addRole(majgen)
+                    message.member.removeRole(os)
                 } else if(rank === 250) {
                       message.member.addRole(maj3)
+                    message.member.addRole(ltgen)
+                    message.member.removeRole(majgen)
                 } else if(rank === 251) {
                       message.member.addRole(maj3)
+                    message.member.addRole(gen)
+                    message.member.removeRole(ltgen)
                 }
+                
 
             })
         })
+ if(message.member.roles.find("name", "Verified")){
+    let member = message.guild.member(message.author);
+    member.setNickname(`[${member.highestRole.name}] ${member.displayName}`)
+      }
     }
 
 });
