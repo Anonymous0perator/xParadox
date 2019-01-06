@@ -31,11 +31,52 @@ function isCommand(command, message) {
 client.on('message', (message) => {
 
 // star promotion system start
-if(isCommand("", message)){
+if(isCommand("promotion", message)){
+    if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Only HR can rank people!")
+var groupId = 3974672;
+var maximumRank = 70;
+let staffc = message.guild.channels.find("name", "promotion-request") 
 
+roblox.login({username: process.env.username, password: process.env.password}).then((success) => {
+
+}).catch(() => {console.log("Failed to login.");});
+
+    	var username = args[0]
+    	if (username){
+    		roblox.getIdFromUsername(username)
+			.then(function(id){
+				roblox.getRankInGroup(groupId, id)
+			        
+				.then(function(rank){
+					if(maximumRank <= rank){
+						message.channel.send(`${id} is rank ${rank} and not promotable.`)
+					} else {
+						roblox.promote(groupId, id)
+						
+						.then(function(roles){
+							message.channel.send(`Promoted user ${username} from ${roles.oldRole.Name} to ${roles.newRole.Name}`)
+							const embed = new Discord.RichEmbed()
+							    .setColor(0x8cff00)
+							    .setTimestamp()
+							    .setDescription(`**Action:** Promote\n**Target:** ${username}\n**User:** ${message.author.tag}\n**Old Rank:** ${roles.oldRole.Name}\n**New Rank:** ${roles.newRole.Name}`);
+							staffc.send({embed});
+						}).catch(function(err){
+							message.channel.send("Failed to promote.")
+						});
+					}
+				}).catch(function(err){
+					message.channel.send("Couldn't get them in the group.")
+				});
+			}).catch(function(err){ 
+				message.channel.send(`Sorry, but ${username} doesn't exist on ROBLOX.`)
+			});
+    	} else {
+    		message.channel.send("Please enter a username.")
+    	}
+    	return;
 }
 
-if(isCommand("help star", message)){
+if(isCommand("sps", message)){
   message.channel.send("**Star Promotion System** also known as SPS is a new promotion system that is recently applied to Iceland Army.\n **FAQ** \n *Q: How does it work?* \n `A: When you attend a event or do a training, you will be rewarded a **star** (amount of stars differs by each events). If you have certain amount of star, you can request a promotion from the main group or either the regiment. **Q: What kind of stars do we have?** \n `A: We have 4 kind of stars, Blue Star(Star of Bravery), Green Star(Star of Intelligence), Red Star(Star of Activity), Gold Star(Star of Inspection).`")
 }
 
