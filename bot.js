@@ -29,44 +29,34 @@ function isCommand(command, message) {
 
 
 client.on('message', (message) => {
-  
 
+// star promotion system start
+if(isCommand("", message)){
+
+}
+
+if(isCommand("help star", message)){
+  message.channel.send("**Star Promotion System** also known as SPS is a new promotion system that is recently applied to Iceland Army.\n **FAQ** \n *Q: How does it work?* \n `A: When you attend a event or do a training, you will be rewarded a **star** (amount of stars differs by each events). If you have certain amount of star, you can request a promotion from the main group or either the regiment. **Q: What kind of stars do we have?** \n `A: We have 4 kind of stars, Blue Star(Star of Bravery), Green Star(Star of Intelligence), Red Star(Star of Activity), Gold Star(Star of Inspection).`")
+}
+
+//star promotion system end
+
+if(isCommand('help', message)){
+  message.author.send("These are few of the commands\n events: This commands gives you event role \n ibt: This command annouces IBT in the discord server \n nptryout: This command annouces national police tryout \n crutryout: This command annouces crisis respond unit tryout \n ssu: This command announces the Server Start Up in academy \n tstryout: This command announces Training Service tryout ")
+}
+
+//event role giver
 if(isCommand('events', message)){
       let member = message.guild.member(message.author);
   var username = member.displayName
   let myRole = message.guild.roles.find("name", "Events");
-    
+
      message.member.addRole(myRole)
     message.reply("Gave you a event role");
 }
-
-  if(isCommand('basictraining', message)){
-/*
-message.channel.send({embed: {
-color: 3447003,
-author: {
-  name: client.user.username,
-  icon_url: client.user.avatarURL
-},
-title: "훈련 알람 봇",
-description: "기초 훈련이 훈련소에서 이루어지고 있습니다",
-fields: [{
-  //`${LowRankRoleObject} 기초 훈련이 훈련소에서 이루어지고 있습니다[일병 OR-1], 훈련소로 집합하시기 바랍니다, 5분후에 기초 훈련이 잠깁니다. https://web.roblox.com/games/2433583525/Camp-Nonsan-V3`
-  {
-    name: "훈련 소식",
-    value: "기초 훈련이 훈련소에서 이루어지고 있습니다[일병 OR-1], 훈련소로 집합하시기 바랍니다, 5분후에 기초 훈련이 잠깁니다. [링크](https://web.roblox.com/games/2433583525/Camp-Nonsan-V3)"
-  }
-],
-timestamp: new Date(),
-footer: {
-  icon_url: client.user.avatarURL,
-  text: "hexcore-roka"
-}
-}
-}});
-
-
-*/
+//event role giver endMeasure
+//event annoucement start
+  if(isCommand('ibt', message)){
    let LowRankRoleObject= message.guild.roles.find('name', 'Events');
   if(message.member.roles.find("name", "High Rank")|| message.member.roles.find("name", "Chief Staff")){
     message.delete(1000);
@@ -103,11 +93,124 @@ footer: {
   } else{
     message.reply("Error:1|| You do not have permmission.")
   }
-
-
-
   }
 
+  if(isCommand('nptryout', message)){
+    let LowRankRoleObject= message.guild.roles.find('name', 'Events');
+   if(message.member.roles.find("name", "Chief Staff")|| message.member.roles.find("name", "High Rank")){
+     message.delete(1000);
+     message.channel.send(`${LowRankRoleObject},`)
+     message.channel.send({embed: {
+         color: 3447003,
+         author: {
+           name: client.user.username,
+           icon_url: client.user.avatarURL
+         },
+         title: "National Police Tryout",
+         url: "https://www.roblox.com/games/1660656584/NEW-Keflakvik-Military-Academy",
+         description: "National Police",
+         fields: [
+           {
+             name: "Event notifier",
+             value: `${LowRankRoleObject} Ever wanted to join the strictest regiment of Iceland Army? This is your chance click the link and join the academy for NP tryout, Tryout will lock in 7 mins. [Link](https://www.roblox.com/games/1660656584/NEW-Keflakvik-Military-Academy). `
+           },
+           {
+             name: "Host",
+             value: message.member.displayName
+           }
+         ],
+         timestamp: new Date(),
+         footer: {
+           icon_url: client.user.avatarURL,
+           text: "hexcore-ia"
+         }
+       }
+     });
+     setTimeout(function(){
+       message.channel.send("NP tryout is locked")
+     }, 420000)
+   } else{
+     message.reply("Error:1 || You do not have permmission")
+   }
+  }
+
+  if(isCommand('tstryout', message)){
+    let LowRankRoleObject= message.guild.roles.find('name', 'Events');
+   if(message.member.roles.find("name", "Chief Staff")|| message.member.roles.find("name", "High Rank")){
+     message.delete(1000);
+     message.channel.send(`${LowRankRoleObject},`)
+     message.channel.send({embed: {
+         color: 3447003,
+         author: {
+           name: client.user.username,
+           icon_url: client.user.avatarURL
+         },
+         title: "Training Service Tryout",
+         url: "https://www.roblox.com/games/1660656584/NEW-Keflakvik-Military-Academy",
+         description: "Training Service Tryout",
+         fields: [
+           {
+             name: "Event notifier",
+             value: `${LowRankRoleObject} Ever wanted to join the training regiment of Iceland Army? This is your chance click the link and join the academy for TS tryout, Tryout will lock in 7 mins. [Link](https://www.roblox.com/games/1660656584/NEW-Keflakvik-Military-Academy). `
+           },
+           {
+             name: "Host",
+             value: message.member.displayName
+           }
+         ],
+         timestamp: new Date(),
+         footer: {
+           icon_url: client.user.avatarURL,
+           text: "hexcore-ia"
+         }
+       }
+     });
+     setTimeout(function(){
+       message.channel.send("TS tryout is locked")
+     }, 420000)
+   } else{
+     message.reply("Error:1 || You do not have permmission")
+   }
+  }
+
+if(isCommand('crutryout', message)){
+  let LowRankRoleObject= message.guild.roles.find('name', 'Events');
+ if(message.member.roles.find("name", "Chief Staff")|| message.member.roles.find("name", "High Rank")){
+   message.delete(1000);
+   message.channel.send(`${LowRankRoleObject},`)
+   message.channel.send({embed: {
+       color: 3447003,
+       author: {
+         name: client.user.username,
+         icon_url: client.user.avatarURL
+       },
+       title: "Crisis Respond Unit Tryout",
+       url: "https://www.roblox.com/games/1931780914/tryhardedgelordtops-2?privateServerLinkCode=v19cRiujjm3FnlS_mG6djWk85korFq-x",
+       description: "Crisis Respond Unit",
+       fields: [
+         {
+           name: "Event notifier",
+           value: `${LowRankRoleObject} Ever wanted to join the elite regiment of Iceland Army? This is your chance click the link and join the tryhardedgelordtops for CRU tryout, Tryout will lock in 7 mins. [Link](https://www.roblox.com/games/1931780914/tryhardedgelordtops-2?privateServerLinkCode=v19cRiujjm3FnlS_mG6djWk85korFq-x). `
+         },
+         {
+           name: "Host",
+           value: message.member.displayName
+         }
+       ],
+       timestamp: new Date(),
+       footer: {
+         icon_url: client.user.avatarURL,
+         text: "hexcore-ia"
+       }
+     }
+   });
+   setTimeout(function(){
+     message.channel.send("CRU tryout is locked")
+   }, 420000)
+ } else{
+   message.reply("Error:1 || You do not have permmission")
+ }
+}
 
 if(isCommand('ssu', message)){
 
@@ -127,7 +230,7 @@ if(message.member.roles.find("name", "Chief Staff")|| message.member.roles.find(
       fields: [
         {
           name: "Event notifier",
-          value: `${LowRankRoleObject} Server Start up [Link](https://www.roblox.com/games/1660656584/NEW-Keflakvik-Military-Academy). `
+          value: `${LowRankRoleObject} Events are being hosted in academy, please report to the academy. [Link](https://www.roblox.com/games/1660656584/NEW-Keflakvik-Military-Academy). `
         },
         {
           name: "Host",
@@ -141,188 +244,13 @@ if(message.member.roles.find("name", "Chief Staff")|| message.member.roles.find(
       }
     }
   });
-  setTimeout(function(){
-    message.channel.send("Join Academy.")
-  }, 300000)
 } else{
-  message.reply("Error:1|| You do not have permmission")
+  message.reply("Error:1 || You do not have permmission")
 }
 
-
-
 }
 
-
-
-//MP || TRADOC || SWC || NCO || KMA || DSSC
-if(isCommand("tagme", message)){
-  let member = message.guild.member(message.author);
-  var username = member.displayName
-  var ads = 4617531;
-  var cg = 4617519;
-  var cru = 4607595;
-  var np = 4607711;
-  let myRole = message.guild.roles.find("name", "ADS");
-  let myRole1 = message.guild.roles.find("name", "CG");
-  let myRole2 = message.guild.roles.find("name", "CRU");
-  let myRole3 = message.guild.roles.find("name", "NP");
-
-  if (username){
-    roblox.getIdFromUsername(username)
-  .then(function(id){
-    roblox.getRankNameInGroup(ads, id)
-    .then(function(rank){
-      if(rank === 'Guest'){
-        message.member.removeRole(myRole)
-      } else {
-        message.member.addRole(myRole)
-      }
-    })
-    roblox.getRankNameInGroup(cg, id)
-    .then(function(rank){
-      if(rank === 'Guest'){
-        message.member.removeRole(myRole1)
-      } else {
-        message.member.addRole(myRole1)
-      }
-    })
-
-    roblox.getRankNameInGroup(cru, id)
-    .then(function(rank){
-      if(rank === 'Guest'){
-        message.member.removeRole(myRole2)
-      } else {
-        message.member.addRole(myRole2)
-      }
-    })
-
-    roblox.getRankNameInGroup(np, id)
-    .then(function(rank){
-      if(rank === 'Guest'){
-        message.member.removeRole(myRole3)
-      } else {
-        message.member.addRole(myRole3)
-      }
-    })
-
-})
-
-
-}
-message.reply("Check your tags.")
-}
-    
-    /*if(isCommand('updatename', message)){
-     if(message.member.roles.find("name", "Verified")){
-    let member = message.guild.member(message.author);
-    member.setNickname(`[${member.highestRole.name}] ${member.displayName}`)
-      }
-    }*/
-    if (isCommand('update', message)){
-
-      var args = message.content.split(/[ ]+/)
-      let member = message.guild.member(message.author);
-       var username = args[1];
-      var text = member.displayName
-      console.log(`${text} has use "update" command`)
-
-        roblox.getIdFromUsername(text)
-        .then(function(id){
-            roblox.getRankInGroup(groupId, id)
-            .then(function(rank){
-              let maj = message.guild.roles.find("name", "Low Rank");
-              let maj2 = message.guild.roles.find("name", "Middle Rank");
-              let maj1 = message.guild.roles.find("name", "High Rank");
-              let maj3 = message.guild.roles.find("name", "Chief Staff");
-              let pvt = message.guild.roles.find("name", "PVT");
-                let lcpl = message.guild.roles.find("name", "LCPL");
-                let cpl = message.guild.roles.find("name", "CPL");
-                let sgt = message.guild.roles.find("name", "SGT");
-                let sfc = message.guild.roles.find("name", "SFC");
-                let ssgt = message.guild.roles.find("name", "SSGT");
-                let lt = message.guild.roles.find("name", "LT");
-                let cpt = message.guild.roles.find("name", "CPT");
-                let major = message.guild.roles.find("name", "MAJ");
-                let ltcol = message.guild.roles.find("name", "LTCOL");
-                let col = message.guild.roles.find("name", "COL");
-                let brig = message.guild.roles.find("name", "BRIG");
-                let os = message.guild.roles.find("name", "OS");
-                let dev = message.guild.roles.find("name", "DEV");
-                let majgen = message.guild.roles.find("name", "MAJGEN");
-                let ltgen = message.guild.roles.find("name", "LTGEN");
-                let gen = message.guild.roles.find("name", "GEN");
-                
-                if (rank === 10) {
-                    message.member.addRole(maj)
-                    message.member.addRole(pvt)
-                }
-                if(rank === 30) {
-                      message.member.addRole(maj)
-                    message.member.addRole(lcpl)
-                    message.member.removeRole(pvt)
-                } else if(rank === 40) {
-                      message.member.addRole(maj)
-                    message.member.addRole(cpl)
-                    message.member.removeRole(lcpl)
-                } else if(rank === 50) {
-                      message.member.addRole(maj)
-                    message.member.addRole(sgt)
-                    message.member.removeRole(cpl)
-                } else if(rank === 60) {
-                      message.member.addRole(maj)
-                    message.member.addRole(sfc)
-                    message.member.removeRole(sgt)
-                } else if(rank === 70) {
-                      message.member.addRole(maj2)
-                    message.member.addRole(ssgt)
-                    message.member.removeRole(sfc)
-                } else if(rank === 75) {
-                      message.member.addRole(maj2)
-                    message.member.addRole(lt)
-                    message.member.removeRole(ssgt)
-                } else if(rank === 79) {
-                      message.member.addRole(maj2)
-                    message.member.addRole(cpt)
-                    message.member.removeRole(lt)
-                } else if(rank === 80) {
-                      message.member.addRole(maj1)
-                    message.member.addRole(major)
-                    message.member.removeRole(cpt)
-                } else if(rank === 90) {
-                      message.member.addRole(maj1)
-                    message.member.addRole(ltcol)
-                    message.member.removeRole(major)
-                } else if(rank === 210) {
-                      message.member.addRole(maj1)
-                    message.member.addRole(col)
-                    message.member.removeRole(ltcol)
-                } else if(rank === 230) {
-                      message.member.addRole(maj1)
-                    message.member.addRole(brig)
-                    message.member.removeRole(col)
-                } else if(rank === 245) {
-                      message.member.addRole(maj1)
-                    message.member.addRole(os)
-                    message.member.removeRole(brig)
-                } else if(rank === 246) {
-                      message.member.addRole(maj3)
-                    message.member.addRole(majgen)
-                    message.member.removeRole(os)
-                } else if(rank === 250) {
-                      message.member.addRole(maj3)
-                    message.member.addRole(ltgen)
-                    message.member.removeRole(majgen)
-                } else if(rank === 251) {
-                      message.member.addRole(maj3)
-                    message.member.addRole(gen)
-                    message.member.removeRole(ltgen)
-                }
-                
-
-            })
-        })
-
-    }
+//event annoucement end
 
 });
 
