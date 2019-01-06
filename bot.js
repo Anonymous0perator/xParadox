@@ -36,6 +36,7 @@ if(isCommand("promotion", message)){
 var groupId = 3974672;
 var maximumRank = 70;
 let staffc = message.guild.channels.find("name", "promotion-request") 
+const args = message.content.slice(prefix.length).trim().split(/ +/g);
 
 roblox.login({username: process.env.username, password: process.env.password}).then((success) => {
 
